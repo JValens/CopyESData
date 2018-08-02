@@ -10,3 +10,13 @@
 *.iml
 
 gradle/wrapper/
+
+*.lock
+
+out/production/classes/
+
+*.bin
+
+build/tmp/scala/compilerAnalysis/
+
+\.gradle/vcsWorkingDirs/
