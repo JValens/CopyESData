@@ -24,3 +24,5 @@ build/tmp/scala/compilerAnalysis/
 dependencies/
 
 *.class
+
+build/libs/
