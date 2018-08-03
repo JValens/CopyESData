@@ -1,7 +1,8 @@
+package com.copydata
+
 import com.typesafe.config.{Config, ConfigFactory}
 import org.apache.spark.SparkConf
 import org.apache.spark.sql.{DataFrameReader, SparkSession}
-import org.elasticsearch.spark.sql.sparkDataFrameFunctions
 
 object ProcessMetas {
   def addID(metaMap: Map[String, String]): String = {
@@ -9,7 +10,7 @@ object ProcessMetas {
   }
 }
 
-class CopyESData {
+object CopyESData {
   //Application Configuration
   val applicationConfig: Config = ConfigFactory.load("application.conf")
 
@@ -48,14 +49,13 @@ class CopyESData {
     preparedDF.saveToEs(copyToElasticIndex + "/" + copyToElasticIndexType,
       Map(
         "es.mapping.id" -> "id",
+        "es.mapping.exclude" -> "id",
         "es.port" -> copyToElasticPort,
         "es.nodes" -> copyToElasticURL
       ))
   }
-}
 
-object RunObject {
   def main(args: Array[String]): Unit = {
-    new CopyESData().performOperation()
+    performOperation()
   }
 }
