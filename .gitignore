@@ -20,3 +20,7 @@ out/production/classes/
 build/tmp/scala/compilerAnalysis/
 
 \.gradle/vcsWorkingDirs/
+
+dependencies/
+
+*.class
